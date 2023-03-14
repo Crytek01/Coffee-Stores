@@ -1,0 +1,30 @@
+{
+  "name": "starting-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix"
+  },
+  "dependencies": {
+    "@types/node": "18.14.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "airtable": "^0.11.6",
+    "classnames": "^2.3.2",
+    "eslint": "8.34.0",
+    "next": "13.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "swr": "^2.0.4",
+    "typescript": "4.9.5",
+    "unsplash-js": "^7.0.15"
+  },
+  "devDependencies": {
+    "eslint-config-next": "13.2.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0"
+  }
+}
