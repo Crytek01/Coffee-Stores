@@ -63,7 +63,7 @@ const CoffeeStore: NextPage<IPageProps> = (initialProps) => {
   } = useCoffeeStores();
 
   const [votingCount, setVotingCount] = useState<number>(
-    initialProps.coffeeStore.voting ?? 0
+    initialProps.coffeeStore?.voting ?? 0
   );
 
   const handleUpVoteButton = async () => {
@@ -113,7 +113,7 @@ const CoffeeStore: NextPage<IPageProps> = (initialProps) => {
     }
 
     setCoffeeStore(data);
-    setVotingCount(data.voting ?? 0);
+    setVotingCount(data?.voting ?? 0);
   }, [apiResponse]);
 
   useEffect(() => {
