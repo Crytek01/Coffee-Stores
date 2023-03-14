@@ -54,6 +54,14 @@ const CoffeeStore: NextPage<IPageProps> = (initialProps) => {
 
   const routerQueryId = router.query.id?.toString() ?? "";
 
+  const { data: apiResponse } = useCoffeeStore(
+    routerQueryId,
+    initialProps.coffeeStore,
+    {
+      refreshInterval: 2000,
+    }
+  );
+
   const [coffeeStore, setCoffeeStore] = useState<ICoffeeStore>(
     initialProps.coffeeStore
   );
@@ -92,14 +100,6 @@ const CoffeeStore: NextPage<IPageProps> = (initialProps) => {
       }
     } catch (error) {}
   };
-
-  const { data: apiResponse } = useCoffeeStore(
-    routerQueryId,
-    initialProps.coffeeStore,
-    {
-      refreshInterval: 2000,
-    }
-  );
 
   useEffect(() => {
     if (!apiResponse) {
@@ -142,7 +142,6 @@ const CoffeeStore: NextPage<IPageProps> = (initialProps) => {
       if (!coffeeStoreFromContext) {
         return;
       }
-
       setCoffeeStore(coffeeStoreFromContext);
       handleCreateCoffeeStore(coffeeStoreFromContext);
     })();
@@ -150,12 +149,8 @@ const CoffeeStore: NextPage<IPageProps> = (initialProps) => {
     return () => {
       isUnmounted = true;
     };
-  }, [
-    coffeeStore,
-    contextCoffeeStores,
-    initialProps.coffeeStore,
-    routerQueryId,
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const {
     name = "",
